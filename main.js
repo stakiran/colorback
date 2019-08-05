@@ -39,13 +39,15 @@ const K = {
     'ENTER'  : 13,
     'ESC'    : 27,
 };
+const PREVIEW_TARGET_SELECTOR = '#preview_area';
+const KEYWATCH_TARGET_SELECTOR = 'body';
 
 function change_color(colorcode){
-    $('body').css('background-color', colorcode);
+    $(PREVIEW_TARGET_SELECTOR).css('background-color', colorcode);
 }
 
 $(function(){
-    var SELECTOR_INPUT = '#current_colorcode';
+    const SELECTOR_INPUT = '#current_colorcode';
     var colorcode_from_qs = qs.get_colorcode();
 
     $(SELECTOR_INPUT).keyup(function(){
@@ -53,7 +55,7 @@ $(function(){
         change_color(maybe_colorcode_from_input);
     });
 
-    $('body').keydown(function(e){
+    $(KEYWATCH_TARGET_SELECTOR).keydown(function(e){
         const keycode = e.keyCode;
         const mod_alt = e.altKey;
         const mod_ctrl = e.ctrlKey;
