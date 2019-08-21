@@ -42,7 +42,20 @@ const K = {
 const PREVIEW_TARGET_SELECTOR = '#preview_area';
 const KEYWATCH_TARGET_SELECTOR = 'body';
 
-function change_color(colorcode){
+function change_color(maybe_colorcode_from_input){
+    var colorcode = maybe_colorcode_from_input.toLowerCase().trim();
+
+    if(colorcode.indexOf(',') != -1 && colorcode.indexOf('rgb') == -1){
+        // 255, 255, 0
+        colorcode = 'rgb(' + colorcode + ')';
+    }else if(colorcode.indexOf(' ') != -1 && colorcode.indexOf('rgb') == -1){
+        // 255 255 0
+        colorcode = 'rgb(' + colorcode + ')';
+        // At most, replace count is two because should be 'x y z'.
+        colorcode = colorcode.replace(' ', ',').replace(' ', ',');
+    }
+
+    // Supported string formats are 'ffff00' or 'rgb(255,255,0)' only.
     $(PREVIEW_TARGET_SELECTOR).css('background-color', colorcode);
 }
 
