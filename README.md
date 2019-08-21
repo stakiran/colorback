@@ -20,6 +20,9 @@ But, about `index.html?xxxx`, `xxxx` must not contain a space.
 - :o: (Good) `index.html?255,0,0`
 - :x: (Bad) `index.html?255 0 0`
 
+## Shortcut keys
+- <key>Esc</key>: Select all the input box.
+
 ## License
 [MIT license](LICENSE), but [jquery.org/license](https://jquery.org/license/) about jQuery.
 
